@@ -48,11 +48,14 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
 
-                        <Grid>
+                        <Grid Padding="2"
+                              RowSpacing="2"
+                              ColumnSpacing="2">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
                                 <ColumnDefinition />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
@@ -62,6 +65,11 @@
                             <Label Text="{Binding Name}"
                                    Grid.Row="0"
                                    Grid.Column="1"/>
+                            <Button Text="Eliminar"
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    CommandParameter="{Binding Id}"
+                                    Clicked="btnEliminar_Clicked"/>
                         </Grid>
                         
                     </DataTemplate>

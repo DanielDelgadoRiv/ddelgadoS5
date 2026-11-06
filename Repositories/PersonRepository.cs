@@ -59,6 +59,31 @@ namespace ddelgadoS5.Repositories
         }
 
         //DELETE (Taller en clase)
+        public void DeletePerson(int id)
+        {
+            int result = 0;
+            try
+            {
+                Init();
+                if (id <= 0)
+                    throw new Exception("Error con el ID seleccionado");
+                result = _conn.Delete<Persona>(id);
+
+                if (result > 0)
+                {
+                    StatusMessage = string.Format("Registro eliminado");
+                }
+                else
+                {
+                    StatusMessage = string.Format("No se encontró el registro a eliminar");
+                }
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Error " + ex.Message);
+            }
+        }
+
         //UPDATE (Tarea)
     }
 
