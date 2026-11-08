@@ -32,7 +32,7 @@
                     Text="Agregar Persona"
                     Grid.Row="0"
                     Grid.Column="0"
-                    Clicked="btnAgregar_Clicked" /> 
+                    Clicked="btnGuardar_Clicked" /> 
             <Label x:Name="lblStatusMessage"
                    TextColor="Red"
                    Grid.Row="1"
@@ -58,6 +58,7 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition />
                                 <ColumnDefinition />
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Label Text="{Binding Id}"
                                    Grid.Row="0"
@@ -70,6 +71,11 @@
                                     Grid.Column="2"
                                     CommandParameter="{Binding Id}"
                                     Clicked="btnEliminar_Clicked"/>
+                            <Button Text="Editar"
+                                    Grid.Row="0"
+                                    Grid.Column="3"
+                                    CommandParameter="{Binding Id}"
+                                    Clicked="btnEditar_Clicked"/>
                         </Grid>
                         
                     </DataTemplate>

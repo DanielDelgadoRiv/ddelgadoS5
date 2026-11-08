@@ -24,7 +24,7 @@ namespace ddelgadoS5.Repositories
             _conn.CreateTable<Persona>();
         }
 
-        //INSERT
+        //INSERT / UPDATE
         public void AddNewPerson(string name)
         {
             int result;
@@ -61,7 +61,7 @@ namespace ddelgadoS5.Repositories
         //DELETE (Taller en clase)
         public void DeletePerson(int id)
         {
-            int result = 0;
+            int result;
             try
             {
                 Init();
@@ -84,7 +84,42 @@ namespace ddelgadoS5.Repositories
             }
         }
 
-        //UPDATE (Tarea)
+        //PRE-UPDATE (Tarea)
+        public void EditPerson(int id, string name)
+        {
+            int result;
+            try
+            {
+                Init();
+
+                if (id <= 0)
+                    throw new Exception("Error con el ID seleccionado");
+
+                if (string.IsNullOrEmpty(name))
+                    throw new Exception("Nombre es requerido");
+
+                Persona persona = new()
+                {
+                    Id = id,
+                    Name = name
+                };
+
+                result = _conn.Update(persona);
+
+                if (result > 0)
+                {
+                    StatusMessage = string.Format("Registro editado");
+                }
+                else
+                {
+                    StatusMessage = string.Format("No se encontró el registro a editar");
+                }
+            }
+            catch (Exception ex)
+            {
+                StatusMessage = string.Format("Error " + ex.Message);
+            }
+        }
     }
 
 }
